@@ -1,12 +1,14 @@
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:sharepoint="http://www.mulesoft.org/schema/mule/sharepoint" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-	http://www.mulesoft.org/schema/mule/sharepoint http://www.mulesoft.org/schema/mule/sharepoint/current/mule-sharepoint.xsd">
-    <flow name="name2">
-		<scheduler doc:name="Scheduler" doc:id="aszgfz">
-		    <scheduling-strategy>
-		        <fixed-frequency/>
-		    </scheduling-strategy>
-		</scheduler>
-		<logger level="INFO" message='$2' doc:name="Logger" doc:id="djvfwx" />
-        </flow>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:sharepoint="http://www.mulesoft.org/schema/mule/sharepoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd  http://www.mulesoft.org/schema/mule/sharepoint http://www.mulesoft.org/schema/mule/sharepoint/current/mule-sharepoint.xsd">
+ <sharepoint:sharepoint-online-config name="Sharepoint-online">
+  <sharepoint:oauth-client-credentials-connection disableCnCheck="true" keyStoreType="PKCS12" siteUrl="xxx" clientId="xxxx" keyStoreAlias="xxxx" tokenUrl="https://login.microsoftonline.com/${sp.oauth.tenantId}/oauth2/v2.0/token" keyStorePassword="changeit" keyStorePath="/resouces"></sharepoint:oauth-client-credentials-connection>
+ </sharepoint:sharepoint-online-config>
+ <flow name="name2">
+  <scheduler doc:id="aszgfz" doc:name="Scheduler">
+   <scheduling-strategy>
+    <fixed-frequency></fixed-frequency>
+   </scheduling-strategy>
+  </scheduler>
+  <sharepoint:list-get-all doc:id="obadvr" doc:name="List get all" config-ref="Sharepoint-online"></sharepoint:list-get-all>
+  <logger doc:id="djvfwx" doc:name="Logger" level="INFO" message="$2"></logger>
+ </flow>
 </mule>
