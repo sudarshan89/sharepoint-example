@@ -1,0 +1,12 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sharepoint="http://www.mulesoft.org/schema/mule/sharepoint" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	http://www.mulesoft.org/schema/mule/sharepoint http://www.mulesoft.org/schema/mule/sharepoint/current/mule-sharepoint.xsd">
+    <flow name="name2">
+		<scheduler doc:name="Scheduler" doc:id="aszgfz">
+		    <scheduling-strategy>
+		        <fixed-frequency/>
+		    </scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" message='$2' doc:name="Logger" doc:id="djvfwx" />
+        </flow>
+</mule>
